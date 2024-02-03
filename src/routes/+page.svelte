@@ -79,11 +79,104 @@
 			</svg>
 		</div>
 	</section>
+
+	<section class="How">
+		<h2>How does <span>Revive</span> work?</h2>
+		<article>
+			<div class="How__card">
+				<div class="How__card--img">
+					<img src="/assets/calculate.png" alt="Calculate" />
+				</div>
+				<div class="How__card--right">
+					<h2>
+						<span>CALCULATE </span>
+						YOUR EMISSIONS
+					</h2>
+					<p>
+						Using our calculators, find out how much your emissions are. You cannot fix what you
+						cannot measure!
+					</p>
+				</div>
+			</div>
+			<div class="How__card">
+				<div class="How__card--img">
+					<img src="/assets/groups.png" alt="groups" />
+				</div>
+
+				<div class="How__card--right">
+					<h2>
+						<span>JOIN AND SUPPORT</span>
+						CLIMATE ACTION GROUPS
+					</h2>
+					<p>
+						You can't solve climate change alone. By working with different climate activism
+						networks, you can find supportive communities eager to offer clear direction and
+						education
+					</p>
+				</div>
+			</div>
+			<!-- SHOP WITH LOW-EMISSIONS BUSINESSES -->
+			<!-- Swap your everyday products with sustainable brands that are measurably lowering global emissions. -->
+			<div class="How__card">
+				<div class="How__card--img">
+					<img src="/assets/shop.png" alt="shop" />
+				</div>
+
+				<div class="How__card--right">
+					<h2>
+						SHOP WITH
+						<span>LOW-EMISSIONS</span>
+						BUSINESSES
+					</h2>
+					<p>
+						Swap your everyday products with sustainable brands that are measurably lowering global
+						emissions.
+					</p>
+				</div>
+			</div>
+			<!-- Revive IS BETTER WITH FRIENDS -->
+			<!-- Get friends involved and encourage them to go carbon neutral.  -->
+			<div class="How__card">
+				<div class="How__card--img">
+					<img src="/assets/friends.png" alt="friends" />
+				</div>
+				<div class="How__card--right">
+					<h2>
+						<i>Revive</i> IS BETTER WITH
+						<span>FRIENDS</span>
+					</h2>
+					<p>
+						Get friends involved and encourage them to go carbon neutral. The more people we have
+						involved, the bigger the impact we can make.
+					</p>
+				</div>
+			</div>
+			<!-- ACHIEVE CLIMATE ACTIONS -->
+			<!-- Discover and complete actions to improve your life and reduce climate pollution. Compete with your friends on the leader-board to make the process fun! -->
+			<div class="How__card">
+				<div class="How__card--img">
+					<img src="/assets/actions.png" alt="actions" />
+				</div>
+
+				<div class="How__card--right">
+					<h2>
+						ACHIEVE
+						<span>CLIMATE ACTIONS</span>
+					</h2>
+					<p>
+						Discover and complete actions to improve your life and reduce climate pollution. Compete
+						with your friends on the leader-board to make the process fun!
+					</p>
+				</div>
+			</div>
+		</article>
+	</section>
 </main>
 
 <style lang="scss">
 	.Main {
 		@include box(100vw, 100vh);
+		padding-bottom: 100px;
 	}
 	.Hero {
 		@include box(100vw, 95vh);
@@ -178,6 +271,71 @@
 			}
 			100% {
 				transform: translate(-50%, 0);
+			}
+		}
+	}
+
+	.How {
+		@include box(100%, auto);
+		@include make-flex($just: flex-start);
+		gap: 20px;
+
+		& > h2 {
+			font-size: 50px;
+			text-align: center;
+			font-weight: 500;
+			margin-top: 100px;
+			@include box(100%, auto);
+			font-family: 'Lora', serif;
+			span {
+				color: var(--green);
+				font-family: 'Courgette', cursive;
+			}
+		}
+
+		& > article {
+			@include box(1000px, auto);
+			@include make-flex($just: flex-start);
+			background-color: var(--subBG);
+			padding: 120px 50px 50px 50px;
+			border-radius: 30px;
+			gap: 250px;
+		}
+
+		&__card {
+			@include box(100%, auto);
+			@include make-flex($dir: row, $just: space-between, $align: flex-start);
+
+			&--img {
+				@include make-flex();
+				@include box(40%, auto);
+				img {
+					@include box(auto, 350px);
+					object-fit: cover;
+				}
+			}
+
+			&--right {
+				@include box(50%, auto);
+				@include make-flex($dir: column, $just: flex-start, $align: flex-start);
+				gap: 20px;
+
+				h2 {
+					font-size: 38px;
+					font-weight: 900;
+					span {
+						color: var(--green);
+					}
+
+					i {
+						font-family: 'Courgette', cursive;
+					}
+				}
+
+				p {
+					font-size: 23px;
+					color: var(--subText);
+				}
 			}
 		}
 	}

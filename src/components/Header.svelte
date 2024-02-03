@@ -14,13 +14,13 @@
 
 	onMount(() => {
 		window.addEventListener('scroll', () => {
-			if (window.scrollY > 45) pastHero = true;
+			if (window.scrollY > 800) pastHero = true;
 			else pastHero = false;
 		});
 	});
 </script>
 
-<header class="HeaderWrapper" class:hero={activeTab === 'home' || pastHero}>
+<header class="HeaderWrapper" class:hero={activeTab === 'home' && !pastHero}>
 	<div class="Header">
 		<div class="Header__left">
 			<a href="/" class="Header__logo"> Revive </a>
@@ -48,6 +48,7 @@
 		// box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.06);
 		// backdrop-filter: blur(5px);
 		@include make-flex();
+		transition: 0.3s;
 
 		&.hero {
 			@include box(100%, 100px);
@@ -55,7 +56,7 @@
 			box-shadow: 0px 60px 55px -15px rgba(0, 0, 0, 0.15) inset;
 			a {
 				color: white !important;
-        text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+				text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 			}
 		}
 
