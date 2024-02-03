@@ -1,5 +1,10 @@
 import { Lucia } from 'lucia';
 import { dev } from '$app/environment';
+import {
+	PUBLIC_GOOGLE_CLIENT_SECRET,
+	PUBLIC_GOOGLE_CLIENT_ID,
+	PUBLIC_REDIRECT_URI
+} from '$env/static/public';
 
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { db } from '$lib/prisma';
@@ -18,7 +23,9 @@ export const lucia = new Lucia(adapter, {
 		return {
 			// attributes has the type of DatabaseUserAttributes
 			googleID: attributes.googleSub,
-			username: attributes.username
+			username: attributes.username,
+			picture: attributes.picture,
+			inviteCode: attributes.inviteCode
 		};
 	}
 });
@@ -33,12 +40,10 @@ declare module 'lucia' {
 interface DatabaseUserAttributes {
 	googleSub: number;
 	username: string;
+	picture: string;
+	inviteCode: string;
 }
-import {
-	PUBLIC_GOOGLE_CLIENT_SECRET,
-	PUBLIC_GOOGLE_CLIENT_ID,
-	PUBLIC_REDIRECT_URI
-} from '$env/static/public';
+
 
 export const google = new Google(
 	PUBLIC_GOOGLE_CLIENT_ID,

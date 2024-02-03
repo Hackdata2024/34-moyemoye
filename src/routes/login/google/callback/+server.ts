@@ -34,33 +34,26 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			name: string;
 			picture: string;
 		} = await googleUserResponse.json();
-		const existingUser = await db.user.findUnique({
-			where: {
-				googleSub: googleUser.id
+
+		const userId = generateId(15);
+		const userData = await db.user.upsert({
+			where: { googleSub: googleUser.id },
+			update: { googleSub: googleUser.id },
+			create: {
+				id: userId,
+				googleSub: googleUser.id,
+				username: googleUser.name,
+				picture: googleUser.picture,
+				inviteCode: generateId(6)
 			}
 		});
+		const session = await lucia.createSession(userData.id, {});
+		const sessionCookie = lucia.createSessionCookie(session.id);
+		event.cookies.set(sessionCookie.name, sessionCookie.value, {
+			path: '.',
+			...sessionCookie.attributes
+		});
 
-		if (existingUser) {
-			const session = await lucia.createSession(existingUser.id, {});
-			const sessionCookie = lucia.createSessionCookie(session.id);
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '.',
-				...sessionCookie.attributes
-			});
-		} else {
-			const userId = generateId(15);
-			await db.user.upsert({
-				where: { id: userId },
-				update: { googleSub: googleUser.id },
-				create: { id: userId, googleSub: googleUser.id, username: googleUser.name }
-			});
-			const session = await lucia.createSession(userId, {});
-			const sessionCookie = lucia.createSessionCookie(session.id);
-			event.cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '.',
-				...sessionCookie.attributes
-			});
-		}
 		return new Response(null, {
 			status: 302,
 			headers: {

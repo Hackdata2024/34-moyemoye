@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Header from '$components/Header.svelte';
-	import Footer from '$components/Footer.svelte';
+	// import Header from '$components/Header.svelte';
+	// import Footer from '$components/Footer.svelte';
 
 	import type { PageData } from '../$types';
 
@@ -30,7 +30,7 @@
 	<title>Revive | {data.pathname.replace(/^\w/, (c) => c.toUpperCase())}</title>
 </svelte:head>
 
-<Header bind:path={data.pathname} />
+<!-- <Header bind:path={data.pathname} /> -->
 <main class="HeroLayout">
 	<div class="Hero">
 		<div class="Hero--img">
@@ -44,7 +44,8 @@
 	<hr />
 	<slot />
 </main>
-<Footer />
+
+<!-- <Footer /> -->
 
 <style lang="scss">
 	.HeroLayout {

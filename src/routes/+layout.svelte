@@ -1,6 +1,6 @@
 <script lang="ts">
-	// import Footer from '$components/Footer.svelte';
-	// import Header from '$components/Header.svelte';
+	import Footer from '$components/Footer.svelte';
+	import Header from '$components/Header.svelte';
 	import type { PageData } from './$types';
 	import { UserStore } from '$store/UserStore';
 
@@ -12,9 +12,13 @@
 	<title>Revive | Fight Climate Change effectively</title>
 </svelte:head>
 
-<!-- <Header bind:path={data.pathname} /> -->
+{#if !data.pathname.includes('profile')}
+	<Header bind:path={data.pathname} />
+{/if}
 <slot />
-<!-- <Footer /> -->
+{#if !data.pathname.includes('profile')}
+	<Footer />
+{/if}
 
 <style lang="scss" global>
 	@import '../styles/root/global.scss';

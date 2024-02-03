@@ -11,10 +11,14 @@ datasource db {
 }
 
 model User {
-  id        String    @id
-  sessions  Session[]
-  googleSub String       @unique
-  username  String
+  id         String    @id
+  sessions   Session[]
+  googleSub  String    @unique
+  username   String
+  picture    String
+  inviteCode String    @unique
+  requests   Friend[]  @relation("Receiver")
+  friends    Friend[]  @relation("Sender")
 }
 
 model Session {
@@ -22,4 +26,23 @@ model Session {
   userId    String
   expiresAt DateTime
   user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// friend request and friend relationship
+model Friend {
+  id         String       @id @default(nanoid())
+  status     FriendStatus @default(PENDING)
+  senderId   String
+  receiverId String
+  sender     User         @relation("Sender", fields: [senderId], references: [id])
+  receiver   User         @relation("Receiver", fields: [receiverId], references: [inviteCode])
+}
+
+enum FriendStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
 }

@@ -1,0 +1,556 @@
+[
+	{
+		"type": "direct",
+		"place": "Bathroom",
+		"name": "Showers",
+		"avg": "11 gallons per person per day",
+		"calculation": "{shower_time} * {showerhead_flow}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "shower_time",
+				"question": "HOW LONG IS THE AVERAGE SHOWER IN YOUR HOUSEHOLD?",
+				"description": "Think about how people in your household shower and determine an average shower length. \n\nThen choose the interval that best reflects how your household uses the shower.",
+				"options": {
+					"Under 5 minutes": "4 minutes",
+					"5-10 minutes": "8 minutes",
+					"11-15 minutes": "13 minutes",
+					"Over 15 minutes": "15 minutes"
+				}
+			},
+			{
+				"id": "showerhead_flow",
+				"question": "DO YOU HAVE LOW-FLOW SHOWERHEADS?",
+				"description": "Low-flow showerheads flow at 2.5 gallons per minute (gpm) (some go as low as 1.5 gpm). Older, less-efficient showerheads use as much as 5.0 gpm.",
+				"options": {
+					"Yes": "2.5 gpm",
+					"Some": "3.8 gpm",
+					"No": "5.0 gpm"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Bathroom",
+		"name": "Baths",
+		"avg": "2 gallons per person per day",
+		"calculation": "35 * {number_of_baths} * {time_period_multiplier} / {number_of_people}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "number_of_baths",
+				"question": "DO YOU TAKE BATHS? IF SO, HOW OFTEN?",
+				"description": "If you or someone in your household takes baths, then you answered “yes.”\n\nThink about how often people in your household take baths (monthly? weekly? daily?). Select a number and time period in order to complete your answer.",
+				"options": {
+					"Never": "0",
+					"Once a day": "1",
+					"2-3 times a week": "2.5",
+					"Once a week": "0.14",
+					"2-3 times a month": "0.1",
+					"Once a month": "0.033",
+					"Less than once a month": "0.003"
+				}
+			},
+			{
+				"id": "time_period_multiplier",
+				"question": "Time Period",
+				"description": "Select the time period that corresponds to how often people in your household take baths.",
+				"options": {
+					"per day": "1",
+					"per week": "0.14",
+					"per month": "0.033",
+					"per year": "0.003"
+				}
+			},
+			{
+				"id": "number_of_people",
+				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
+				"description": "Enter the number of people in your household.",
+				"options": {}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Bathroom",
+		"name": "Bathroom Sinks",
+		"avg": "3 gallons per person per day",
+		"calculation": "{sink_time} * {sink_flow}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "sink_time",
+				"question": "HOW LONG DO YOU LEAVE YOUR BATHROOM FAUCETS RUNNING EACH DAY? (Include brushing your teeth and shaving.)",
+				"description": "Think about how people in your household use the bathroom sink and determine an average use time. Then choose the time interval that best reflects how your household uses the bathroom sink.",
+				"options": {
+					"Under 4 minutes": "4 minutes",
+					"4-10 minutes": "8 minutes",
+					"11-30 minutes": "20 minutes",
+					"Over 30 minutes": "30 minutes"
+				}
+			},
+			{
+				"id": "sink_flow",
+				"question": "DO YOUR BATHROOM SINKS HAVE LOW-FLOW FAUCETS?",
+				"description": "Low-flow faucets flow at 1.5 gpm (some go lower). Older, less-efficient faucets can flow as much as 5 gpm.",
+				"options": {
+					"Yes": "1.5 gpm",
+					"Some": "3.3 gpm",
+					"No": "5.0 gpm"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Bathroom",
+		"name": "Toilets",
+		"avg": "1.7 gallons per person per day",
+		"calculation": "{let_it_mellow} * {flushes_per_day}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "let_it_mellow",
+				"question": "DO YOU “LET IT MELLOW”?",
+				"description": "Think about how people in your home flush the toilet. Do they “let it mellow” and only flush for bowel movements?",
+				"options": { "Always": "1.7", "Sometimes": "3.4", "Never": "5.0" }
+			},
+			{
+				"id": "flushes_per_day",
+				"question": "Flushes Per Day",
+				"description": "Select the number of flushes per day based on how often people in your home flush the toilet.",
+				"options": { "1.7 flushes": "1.7", "3.4 flushes": "3.4", "5.0 flushes": "5.0" }
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Kitchen",
+		"name": "Kitchen Sink",
+		"avg": "7 gallons per person per day",
+		"calculation": "{kitchen_sink_time} * {kitchen_sink_flow}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "kitchen_sink_time",
+				"question": "HOW LONG DO YOU LEAVE THE KITCHEN FAUCET RUNNING EACH DAY? (Include rinsing food and cleaning, don’t include washing dishes)",
+				"description": "Think about how people in your household use the kitchen sink - like when they wash their hands or rinse produce but not when they wash dishes - and determine an average use time. Then choose the time interval that best reflects how your household uses the kitchen sink.",
+				"options": {
+					"Under 5 minutes": "4 minutes",
+					"5-20 minutes": "13 minutes",
+					"21-45 minutes": "33 minutes",
+					"Over 45 minutes": "45 minutes"
+				}
+			},
+			{
+				"id": "kitchen_sink_flow",
+				"question": "DOES YOUR KITCHEN SINK HAVE A LOW-FLOW FAUCET?",
+				"description": "Water-saving faucets flow at 1.5 gpm (some even lower). Older, less-efficient faucets flow up to 5 gpm. We assume you only have one kitchen faucet.",
+				"options": {
+					"Yes": "1.5 gpm",
+					"No": "5.0 gpm"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Kitchen",
+		"name": "Washing Dishes",
+		"avg": "1 gallon per person per day",
+		"calculation": "{dishwashing_method} * {loads} * {time_multiplier} / {number_of_people}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "dishwashing_method",
+				"question": "HOW DO YOU WASH YOUR DISHES?",
+				"description": "Choose any method that your household uses to do the dishes. Figure out how many loads you wash using each method over a given time period.",
+				"options": {
+					"Less-efficient dishwasher": "15",
+					"Energy/Water-efficient dishwasher": "4.3",
+					"Hand wash": "27",
+					"Disposable dishes or eat out": "5.4 times the number of household members"
+				}
+			},
+			{
+				"id": "loads",
+				"question": "NUMBER OF LOADS",
+				"description": "Figure out how many loads you wash using each dishwashing method over a given time period.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4+": "5"
+				}
+			},
+			{
+				"id": "time_multiplier",
+				"question": "Time Period",
+				"description": "Select the time period that corresponds to how often you wash dishes using each method.",
+				"options": {
+					"per day": "1.0",
+					"per week": "0.14",
+					"per month": "0.033",
+					"per year": "0.003"
+				}
+			},
+			{
+				"id": "number_of_people",
+				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
+				"description": "Enter the number of people in your household.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Laundry",
+		"name": "Laundry",
+		"avg": "10 gallons per person per day",
+		"calculation": "{clothes_washing_method} * {loads} * {time_multiplier} / {number_of_people}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "clothes_washing_method",
+				"question": "HOW DO YOU DO LAUNDRY?",
+				"description": "Choose any method that your household uses to do the laundry. Figure out how many loads you wash using each method over a given time period.",
+				"options": {
+					"Less-efficient washing machine": "41",
+					"Energy/Water-efficient washing machine": "20",
+					"Laundromat, wash and fold or shared laundry rooms": "17"
+				}
+			},
+			{
+				"id": "loads",
+				"question": "NUMBER OF LOADS",
+				"description": "Figure out how many loads you wash using each laundry method over a given time period.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4+": "5"
+				}
+			},
+			{
+				"id": "time_multiplier",
+				"question": "Time Period",
+				"description": "Select the time period that corresponds to how often you do laundry using each method.",
+				"options": {
+					"per day": "1.0",
+					"per week": "0.14",
+					"per month": "0.033",
+					"per year": "0.003"
+				}
+			},
+			{
+				"id": "number_of_people",
+				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
+				"description": "Enter the number of people in your household.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Home",
+		"name": "Greywater System",
+		"avg": "25 gallons per person per day",
+		"calculation": "{greywater_system_installed} * {potential_greywater} / {number_of_people}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "greywater_system_installed",
+				"question": "DO YOU HAVE A GREYWATER SYSTEM INSTALLED IN YOUR HOME?",
+				"description": "If you have a greywater system in your household, then you answered “yes.” A greywater system lets you collect and reuse safe, relatively clean water from your laundry, shower, and bath to water your lawn and garden.",
+				"options": {
+					"Yes": "1",
+					"No": "0"
+				}
+			},
+			{
+				"id": "potential_greywater",
+				"question": "GREYWATER POTENTIAL",
+				"description": "The average household has the potential to generate about 23,000 gallons of usable greywater per year. Divide this by the number of people in your household to get the gallons per person per day. Subtract this from your total water footprint so far.",
+				"options": {
+					"0 gallons per year": "0",
+					"23,000 gallons per year": "23,000"
+				}
+			},
+			{
+				"id": "number_of_people",
+				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
+				"description": "Enter the number of people in your household.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Lawn & Garden",
+		"name": "Watering",
+		"avg": "72 gallons per person per day",
+		"calculation": "{watering_lawn_or_garden} * {area_interval_multiplier} * {watering_times} * {time_multiplier} / {number_of_people}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "watering_lawn_or_garden",
+				"question": "DO YOU WATER A LAWN OR GARDEN?",
+				"description": "If you have a lawn, then you answered “yes.”",
+				"options": {
+					"Yes": "1",
+					"No": "0"
+				}
+			},
+			{
+				"id": "area_interval_multiplier",
+				"question": "AREA INTERVAL",
+				"description": "Think about how many square feet you actually water and choose the area interval from the table.",
+				"options": {
+					"1-99 square feet": "17",
+					"100-500 square feet": "99",
+					"500-1,000 square feet": "248",
+					"1,000-5,000 square feet": "990",
+					"5,000-10,000 square feet": "2,470",
+					"10,000-40,000 square feet": "8,250",
+					"> 40,000 square feet": "14,375"
+				}
+			},
+			{
+				"id": "watering_times",
+				"question": "NUMBER OF TIMES WATERING",
+				"description": "Think about how many times you water in a given time period.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4+": "5"
+				}
+			},
+			{
+				"id": "time_multiplier",
+				"question": "Time Period",
+				"description": "Select the time period that corresponds to how often you water your lawn or garden.",
+				"options": {
+					"per day": "1.0",
+					"per week": "0.14",
+					"per month": "0.033",
+					"per year": "0.003"
+				}
+			},
+			{
+				"id": "number_of_people",
+				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
+				"description": "Enter the number of people in your household.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Home",
+		"name": "Rain Barrel",
+		"avg": "2 gallons per person per day",
+		"calculation": "{rain_barrel} / {number_of_people}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "rain_barrel",
+				"question": "DO YOU HAVE A RAIN BARREL?",
+				"description": "If you have a rain barrel, then you answered “yes.” Rain barrels vary in size, but on average can collect about 1,300 gallons in a year that you could use on your lawn and garden. That works out to a savings of about 4 gallons per day for a household.",
+				"options": {
+					"Yes": "4",
+					"No": "0"
+				}
+			},
+			{
+				"id": "number_of_people",
+				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
+				"description": "Enter the number of people in your household.",
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4"
+				}
+			}
+		]
+	},
+	{
+		"type": "direct",
+		"place": "Home",
+		"name": "Car Washing",
+		"avg": "1 gallon per person per day",
+		"calculation": "{garden_hose} + {full_service_car_wash} + {self_service_car_wash} / {number_of_people}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "garden_hose",
+				"question": "DO YOU WASH YOUR CAR USING A GARDEN HOSE AT HOME?",
+				"description": "A hose at home without a spray nozzle could use as much as 100 gallons per wash. You can reduce this if you use a spray nozzle that lets you turn the spray on and off.",
+				"options": {
+					"Yes": "100",
+					"No": "0"
+				}
+			},
+			{
+				"id": "full_service_car_wash",
+				"question": "DO YOU USE A FULL-SERVICE CAR WASH?",
+				"description": "An automatic or full-service car wash (where a machine sprays water over your car) varies from 30 gallons to 100 gallons per wash and uses an average of 58 gallons per wash.",
+				"options": {
+					"Yes": "58",
+					"No": "0"
+				}
+			},
+			{
+				"id": "self_service_car_wash",
+				"question": "DO YOU USE A SELF-SERVICE CAR WASH?",
+				"description": "A self-service car wash (where you use a high-pressure hose with a “trigger” spray nozzle) uses the least amount of water at 15 gallons per wash. These usually work on timers, which encourage conservation.",
+				"options": {
+					"Yes": "15",
+					"No": "0"
+				}
+			},
+			{
+				"id": "number_of_people",
+				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
+				"description": "Enter the number of people in your household.",
+				"options": {}
+			}
+		]
+	},
+	{
+		"type": "virtual",
+		"name": "Shopping",
+		"avg": "583 gallons per person per day",
+		"calculation": "{shopping_category}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "shopping_category",
+				"question": "HOW MUCH DO YOU SHOP?",
+				"description": "This question covers shopping for everything but food. Choose the category that best describes your household.",
+				"options": {
+					"Shop for basics": "291",
+					"Like to shop": "583",
+					"Shop 'til you drop": "1,166"
+				}
+			}
+		]
+	},
+	{
+		"type": "recycling",
+		"name": "Recycle Paper",
+		"avg": "3 gallons per person per day",
+		"calculation": "4 x {recycling_paper_category}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "recycling_paper_category",
+				"question": "DO YOU RECYCLE PAPER?",
+				"description": "Choose the answer that applies to your household.",
+				"options": {
+					"None": "0",
+					"Some": "2",
+					"All": "4"
+				}
+			}
+		]
+	},
+	{
+		"type": "recycling",
+		"name": "Recycle Plastic",
+		"avg": "1 gallon per person per day",
+		"calculation": "16.5 x {recycling_plastic_category}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "recycling_plastic_category",
+				"question": "DO YOU RECYCLE PLASTIC?",
+				"description": "Choose the answer that applies to your household.",
+				"options": {
+					"None": "0",
+					"Some": "8.3",
+					"All": "16.5"
+				}
+			}
+		]
+	},
+	{
+		"type": "recycling",
+		"name": "Recycle Plastic",
+		"avg": "1 gallon per person per day",
+		"calculation": "16.5 gallons x {recycling_plastic_category}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "recycling_plastic_category",
+				"question": "DO YOU RECYCLE PLASTIC?",
+				"description": "Choose the answer that applies to your household.",
+				"options": {
+					"None": "0",
+					"Some": "8.3",
+					"All": "16.5"
+				}
+			}
+		]
+	},
+	{
+		"type": "recycling",
+		"name": "Recycle Bottles & Cans",
+		"avg": "8 gallons per person per day",
+		"calculation": "30.13 gallons x {recycling_bottles_cans_category}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "recycling_bottles_cans_category",
+				"question": "DO YOU RECYCLE BOTTLES AND CANS?",
+				"description": "Choose the answer that applies to your household.",
+				"options": {
+					"None": "0",
+					"Some": "15",
+					"All": "30.1"
+				}
+			}
+		]
+	},
+	{
+		"type": "recycling",
+		"name": "Recycle Fabrics",
+		"avg": "1 gallon per person per day",
+		"calculation": "5.7 gallons x {recycle_fabrics_category}",
+		"resultType": "gallons of water per person per day",
+		"questions": [
+			{
+				"id": "recycle_fabrics_category",
+				"question": "Recycle Fabrics?",
+				"description": "Choose the answer that applies to your household.",
+				"options": {
+					"No": "0",
+					"Sometimes": "2.9",
+					"Always": "5.7"
+				}
+			}
+		]
+	}
+]
