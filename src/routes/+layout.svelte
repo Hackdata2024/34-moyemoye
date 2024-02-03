@@ -2,8 +2,11 @@
 	import Footer from '$components/Footer.svelte';
 	import Header from '$components/Header.svelte';
 	import type { PageData } from './$types';
+	import { UserStore } from '$store/UserStore';
 
 	export let data: PageData;
+
+	$: UserStore.set(data.user);
 </script>
 
 <svelte:head>

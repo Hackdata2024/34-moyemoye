@@ -3,9 +3,8 @@ import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	if (!event.locals.user) redirect(302, '/login');
 	return {
-		username: event.locals.user.username
+		user: event.locals.user
 	};
 };
 
@@ -20,6 +19,6 @@ export const actions: Actions = {
 			path: '.',
 			...sessionCookie.attributes
 		});
-		redirect(302, '/login');
+		redirect(302, '/');
 	}
 };

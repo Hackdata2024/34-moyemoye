@@ -1,5 +1,6 @@
 import { Lucia } from 'lucia';
 import { dev } from '$app/environment';
+
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { db } from '$lib/prisma';
 import { Google } from 'arctic';
@@ -16,7 +17,7 @@ export const lucia = new Lucia(adapter, {
 	getUserAttributes: (attributes) => {
 		return {
 			// attributes has the type of DatabaseUserAttributes
-			githubId: attributes.googleSub,
+			googleID: attributes.googleSub,
 			username: attributes.username
 		};
 	}
@@ -33,9 +34,14 @@ interface DatabaseUserAttributes {
 	googleSub: number;
 	username: string;
 }
+import {
+	PUBLIC_GOOGLE_CLIENT_SECRET,
+	PUBLIC_GOOGLE_CLIENT_ID,
+	PUBLIC_REDIRECT_URI
+} from '$env/static/public';
 
 export const google = new Google(
-	import.meta.env.GOOGLE_CLIENT_ID,
-	import.meta.env.GOOGLE_CLIENT_SECRET,
-	'/'
+	PUBLIC_GOOGLE_CLIENT_ID,
+	PUBLIC_GOOGLE_CLIENT_SECRET,
+	PUBLIC_REDIRECT_URI
 );
