@@ -300,11 +300,24 @@
 			padding: 120px 50px 50px 50px;
 			border-radius: 30px;
 			gap: 250px;
+
+			@include respondAt(1100px) {
+				width: 90%;
+			}
+			@include respondAt(1090px) {
+				gap: 100px;
+			}
 		}
 
 		&__card {
 			@include box(100%, auto);
 			@include make-flex($dir: row, $just: space-between, $align: flex-start);
+
+			@include respondAt(1090px) {
+				flex-direction: column;
+				align-items: center;
+				gap: 20px;
+			}
 
 			&--img {
 				@include make-flex();
@@ -319,10 +332,22 @@
 				@include box(50%, auto);
 				@include make-flex($dir: column, $just: flex-start, $align: flex-start);
 				gap: 20px;
+				@include respondAt(1090px) {
+					width: 80%;
+				}
+				@include respondAt(650px) {
+					width: 100%;
+				}
 
 				h2 {
 					font-size: 38px;
 					font-weight: 900;
+					@include respondAt(1090px) {
+						text-align: center;
+					}
+					@include respondAt(650px) {
+						font-size: 30px;
+					}
 					span {
 						color: var(--green);
 					}
@@ -335,6 +360,13 @@
 				p {
 					font-size: 23px;
 					color: var(--subText);
+					@include respondAt(1090px) {
+						text-align: center;
+					}
+
+					@include respondAt(650px) {
+						font-size: 20px;
+					}
 				}
 			}
 		}
