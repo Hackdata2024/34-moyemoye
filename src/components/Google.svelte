@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { clickOutside } from '$directive/ClickOutside';
 	import { UserStore } from '$store/UserStore';
+
+	$: menuOpen = false;
 </script>
 
 {#if $UserStore === null}
@@ -33,9 +36,28 @@
 		<span>Sign in</span>
 	</a>
 {:else}
-	<form method="post" use:enhance action="/">
-		<button class="CrispButton" data-type="danger">Sign out</button>
-	</form>
+	<details
+		class="CrispMenu Profile"
+		use:clickOutside
+		bind:open={menuOpen}
+		on:outclick={() => (menuOpen = false)}
+	>
+		<summary>
+			<span>
+				Hi, {$UserStore.username}
+			</span>
+		</summary>
+		<ul class="CrispMenu__content Profile__content">
+			<li class="CrispMenu__item">
+				<a href="/profile">Profile</a>
+			</li>
+			<li class="">
+				<form method="post" use:enhance action="/">
+					<button class="CrispButton" data-type="danger">Sign out</button>
+				</form>
+			</li>
+		</ul>
+	</details>
 {/if}
 
 <style lang="scss">
@@ -53,6 +75,34 @@
 
 			& > svg {
 				@include box(20px, 20px);
+			}
+		}
+	}
+	.Profile {
+		& > summary {
+			& > span {
+				height: 16px;
+			}
+		}
+		&__content {
+			width: 120px;
+
+			li {
+				width: 100%;
+				padding: 0;
+				a {
+					text-decoration: none;
+					height: 16px;
+					width: 100%;
+					padding: 0 10px ;
+				}
+				form {
+					width: 100%;
+
+					button {
+						width: 100%;
+					}
+				}
 			}
 		}
 	}
