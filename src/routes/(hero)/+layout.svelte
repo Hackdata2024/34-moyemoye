@@ -11,7 +11,8 @@
 		},
 		actions: {
 			image: '/assets/actions.png',
-			title: 'Discover <span style="color:var(--green);">simple actions</span> to make an impact on climate change',
+			title:
+				'Discover <span style="color:var(--green);">simple actions</span> to make an impact on climate change',
 			desc: 'Find simple, fun and impactful actions that you can take to earn points and compete with your friends!'
 		},
 		brands: {
@@ -32,14 +33,22 @@
 			<p>{heroData[data.pathname].desc}</p>
 		</div>
 	</div>
+	<hr />
 	<slot />
 </main>
 
 <style lang="scss">
 	.HeroLayout {
 		@include box(100%, auto);
+		@include make-flex($just: flex-start);
+		gap: 120px;
 		max-width: $maxWidth;
 		padding-top: 64px;
+		& > hr {
+			width: 70%;
+			border-radius: 10px;
+			border: 1px solid var(--divider);
+		}
 	}
 
 	.Hero {
@@ -47,13 +56,28 @@
 		@include box(100%, auto);
 		@include make-flex($dir: row, $align: flex-start);
 
+		@include respondAt(890px) {
+			flex-direction: column;
+			align-items: center;
+			gap: 20px;
+		}
+
 		&--img {
 			@include make-flex();
 			@include box(50%, auto);
 			padding: 0 32px;
+
+			@include respondAt(890px) {
+				width: 100%;
+				height: auto;
+			}
 			img {
 				@include box(auto, 450px);
 				object-fit: cover;
+
+				@include respondAt(650px) {
+					height: 300px;
+				}
 			}
 		}
 
@@ -63,10 +87,13 @@
 			@include make-flex();
 			gap: 32px;
 
+			@include respondAt(890px) {
+				width: 100%;
+			}
 			h1 {
 				font-size: 60px;
 				font-weight: 900;
-				@include respondAt(1090px) {
+				@include respondAt(890px) {
 					text-align: center;
 				}
 				@include respondAt(650px) {
@@ -75,16 +102,12 @@
 				span {
 					color: var(--green);
 				}
-
-				i {
-					font-family: 'Courgette', cursive;
-				}
 			}
 
 			p {
 				font-size: 23px;
 				color: var(--subText);
-				@include respondAt(1090px) {
+				@include respondAt(890px) {
 					text-align: center;
 				}
 
