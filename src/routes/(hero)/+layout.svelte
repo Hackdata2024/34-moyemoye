@@ -41,7 +41,7 @@
 	.HeroLayout {
 		@include box(100%, auto);
 		@include make-flex($just: flex-start);
-		gap: 120px;
+		gap: 90px;
 		max-width: $maxWidth;
 		padding-top: 64px;
 		& > hr {
