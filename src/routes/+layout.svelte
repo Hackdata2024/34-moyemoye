@@ -6,6 +6,10 @@
 	export let data: PageData;
 </script>
 
+<svelte:head>
+	<title>Revive | Fight Climate Change effectively</title>
+</svelte:head>
+
 <Header bind:path={data.pathname} />
 <slot />
 <Footer />

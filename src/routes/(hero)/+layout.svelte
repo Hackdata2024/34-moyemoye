@@ -23,6 +23,10 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Revive | {data.pathname.replace(/^\w/, (c) => c.toUpperCase())}</title>
+</svelte:head>
+
 <main class="HeroLayout">
 	<div class="Hero">
 		<div class="Hero--img">

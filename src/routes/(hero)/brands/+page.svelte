@@ -58,10 +58,12 @@
 				<picture>
 					<img srcset={brand.image} alt={brand.name} />
 				</picture>
-				<h2>{brand.name}</h2>
-				<p>{brand.description}</p>
-				<div class="Row--end w-100" style="margin-top: auto;">
-					<a href={brand.link} class="CrispButton"> Learn More </a>
+				<div class="BrandCard__right">
+					<h2>{brand.name}</h2>
+					<p title={brand.description}>{brand.description}</p>
+					<div class="Row--end w-100" style="margin-top: auto;">
+						<a href={brand.link} class="CrispButton"> Learn More </a>
+					</div>
 				</div>
 			</div>
 		{/each}
@@ -127,13 +129,12 @@
 	.BrandCard {
 		@include box(100%, auto);
 		padding: 20px;
-		// @include make-flex($dir: row, $align: flex-start, $just: space-between);
+		@include make-flex($dir: row, $align: flex-start, $just: space-between);
 		gap: 20px;
 		transition: height 0.3s ease-in-out;
 		border-radius: 10px;
 		border: 1.5px solid var(--border);
 
-		// &__right {
 		& > picture {
 			@include box(auto, auto);
 			flex-shrink: 0;
@@ -147,38 +148,39 @@
 				@include make-flex();
 			}
 		}
-		gap: 15px;
-		@include box(100%, auto);
-		@include make-flex($align: flex-start);
+		&__right {
+			gap: 15px;
+			@include box();
+			@include make-flex($align: flex-start);
 
-		h2 {
-			font-size: 28px;
-			font-weight: 700;
-			color: var(--green-border);
+			h2 {
+				font-size: 28px;
+				font-weight: 700;
+				color: var(--green-border);
+			}
+
+			p {
+				-webkit-box-orient: vertical;
+				display: -webkit-box;
+				-webkit-line-clamp: 4;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: normal;
+
+				font-size: 20px;
+				color: var(--subText);
+			}
+
+			a {
+				color: white;
+				text-decoration: none;
+				background-color: var(--green);
+				font-family: 'Jockey One', sans-serif;
+				border: none;
+				box-shadow: none;
+				font-weight: 300;
+				font-size: 18px;
+			}
 		}
-
-		p {
-			-webkit-box-orient: vertical;
-			display: -webkit-box;
-			-webkit-line-clamp: 4;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: normal;
-
-			font-size: 20px;
-			color: var(--subText);
-		}
-
-		a {
-			color: white;
-			text-decoration: none;
-			background-color: var(--green);
-			font-family: 'Jockey One', sans-serif;
-			border: none;
-			box-shadow: none;
-      font-weight: 300;
-			font-size: 18px;
-		}
-		// }
 	}
 </style>

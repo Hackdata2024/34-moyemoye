@@ -35,7 +35,7 @@
 				data-difficulty={action.difficulty}
 				class:full={fullIndex === index}
 			>
-				{action.desc}
+				{@html action.desc.replaceAll('\n', '<br>')}
 			</p>
 
 			<div class="Row--end w-100">

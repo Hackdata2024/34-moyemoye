@@ -13,7 +13,7 @@
 				src="/assets/hero.mp4"
 				disablepictureinpicture
 				disableremoteplayback
-				poster="/poster.png"
+				poster="/assets/hero.jpg"
 				bind:playbackRate={playBackRate}
 			/>
 			<span> Learn More </span>
