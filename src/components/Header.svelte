@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import Google from './Google.svelte';
 
 	export let path: string;
 
@@ -30,7 +31,7 @@
 			<li><a href="/brands" class:active={activeTab === 'brands'}> Brands </a></li>
 		</ul>
 		<div class="Header__right">
-			<!-- <Google /> -->
+			<Google />
 		</div>
 	</div>
 </header>
@@ -52,6 +53,10 @@
 			@include box(100%, 100px);
 			background: rgba(255, 255, 255, 0.01);
 			box-shadow: 0px 60px 55px -15px rgba(0, 0, 0, 0.15) inset;
+			a {
+				color: white !important;
+        text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+			}
 		}
 
 		&:not(.hero) {
