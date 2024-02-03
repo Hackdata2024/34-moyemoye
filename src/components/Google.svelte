@@ -1,4 +1,4 @@
-<button class="Google--button CrispButton">
+<a href="/login/google" class="Google--button CrispButton">
 	<svg
 		version="1.1"
 		xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@
 		<path fill="none" d="M0 0h48v48H0z" />
 	</svg>
 	<span>Sign in</span>
-</button>
+</a>
 
 <style lang="scss">
 	.Google {
