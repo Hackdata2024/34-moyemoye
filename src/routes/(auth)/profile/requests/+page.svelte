@@ -17,13 +17,7 @@
 	$: console.log(data.profile);
 </script>
 
-<main class="Profile">
-	<h1>
-		Hello,
-		<span>
-			{$UserStore?.username}!
-		</span>
-	</h1>
+
 	<div class="Profile__inviteCodes Row--end gap-10 w-100">
 		<label class="CrispLabel w-auto" data-direction="row" data-align="center" for="copy">
 			<p>Share you code!</p>
@@ -50,7 +44,7 @@
 			</summary>
 			<div class="CrispMenu__content ProfileMenu__content">
 				<h3>Send request</h3>
-				<form method="post" use:enhance action="/profile/friends?/sendRequest">
+				<form method="post" use:enhance action="/profile/requests?/sendRequest">
 					<label class="CrispLabel" for="inviteCode">
 						<p data-required>User Invite code</p>
 						<input
@@ -79,7 +73,7 @@
 			{:else}
 				<!-- friends list will have sender as you -->
 				<h3>
-					<span> Requests you have received: </span>
+					<span> Requests that you sent: </span>
 				</h3>
 				{#each requestsFromYou as request}
 					<!-- Possible: ACCEPTED, REJECTED, CANCELLED -->
@@ -88,19 +82,14 @@
 						<div class="Profile__friendList--left gap-15">
 							<img src={request.receiver.picture} alt={request.receiver.username} />
 							<h4>{request.receiver.username}</h4>
+							<h5>{request.receiver.email}</h5>
 						</div>
 						<div class="Profile__friendList--right gap-15">
 							{#if request.status === FriendStatus.PENDING}
-								<form method="post" use:enhance action="/profile/friends?/acceptRequest">
-									<input type="hidden" name="requestCode" value={request.id} />
-									<button class="CrispButton" data-type="success">
-										<span> Accept </span>
-									</button>
-								</form>
-								<form method="post" use:enhance action="/profile/friends?/rejectRequest">
+								<form method="post" use:enhance action="/profile/requests?/cancelRequest">
 									<input type="hidden" name="requestCode" value={request.id} />
 									<button class="CrispButton" data-type="danger">
-										<span> Reject </span>
+										<span> Cancel </span>
 									</button>
 								</form>
 							{:else}
@@ -120,7 +109,7 @@
 			{:else}
 				<!-- requests list will have receiver as you -->
 				<h3>
-					<span> Requests that you sent</span>
+					<span> Requests you have received: </span>
 				</h3>
 				{#each requestsToYou as request}
 					<!-- Possible: ACCEPTED, REJECTED, CANCELLED -->
@@ -128,13 +117,20 @@
 						<div class="Profile__friendList--left gap-15">
 							<img src={request.sender.picture} alt={request.sender.username} />
 							<h4>{request.sender.username}</h4>
+							<h5>{request.sender.email}</h5>
 						</div>
 						<div class="Profile__friendList--right gap-15">
 							{#if request.status === FriendStatus.PENDING}
-								<form method="post" use:enhance action="/profile/friends?/cancelRequest">
+								<form method="post" use:enhance action="/profile/requests?/acceptRequest">
+									<input type="hidden" name="requestCode" value={request.id} />
+									<button class="CrispButton" data-type="success">
+										<span> Accept </span>
+									</button>
+								</form>
+								<form method="post" use:enhance action="/profile/requests?/rejectRequest">
 									<input type="hidden" name="requestCode" value={request.id} />
 									<button class="CrispButton" data-type="danger">
-										<span> Cancel </span>
+										<span> Reject </span>
 									</button>
 								</form>
 							{:else}
@@ -150,30 +146,14 @@
 			{/if}
 		</ul>
 	</section>
-</main>
+
 
 <style lang="scss">
 	.Profile {
-		gap: 14px;
-		padding: 16px;
-		margin: 64px auto;
-		max-width: $maxProfileWidth;
-		@include box($height: auto);
-		@include make-flex($just: flex-start, $align: flex-start);
-
 		&__inviteCodes {
 			@include respondAt(510px) {
 				flex-direction: column;
 				align-items: flex-end;
-			}
-		}
-
-		& > h1 {
-			font-size: 40px;
-			font-weight: 900;
-
-			& > span {
-				color: var(--green);
 			}
 		}
 

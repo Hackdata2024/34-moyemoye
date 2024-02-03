@@ -33,6 +33,7 @@ export async function GET(event: RequestEvent): Promise<Response> {
 			id: string;
 			name: string;
 			picture: string;
+			email: string;
 		} = await googleUserResponse.json();
 
 		const userId = generateId(15);
@@ -44,7 +45,8 @@ export async function GET(event: RequestEvent): Promise<Response> {
 				googleSub: googleUser.id,
 				username: googleUser.name,
 				picture: googleUser.picture,
-				inviteCode: generateId(6)
+				inviteCode: generateId(6),
+				email: googleUser.email
 			}
 		});
 		const session = await lucia.createSession(userData.id, {});

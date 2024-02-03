@@ -1,6 +1,4 @@
 import {
-	acceptFriendRequest,
-	cancelFriendRequest,
 	getUserProfile,
 	sendFriendRequest
 } from '$db/Friends.db';
@@ -30,31 +28,4 @@ export const actions: Actions = {
 			});
 		}
 	},
-	async cancelRequest({ request, locals }) {
-		const form = await request.formData();
-		const requestCode = form.get('requestCode') as string;
-
-		await cancelFriendRequest(requestCode);
-		return {
-			profile: await getUserProfile(locals.user!.id)
-		};
-	},
-	async acceptRequest({ request, locals }) {
-		const form = await request.formData();
-		const requestCode = form.get('requestCode') as string;
-
-		await acceptFriendRequest(requestCode);
-		return {
-			profile: await getUserProfile(locals.user!.id)
-		};
-	},
-	async rejectRequest({ request, locals }) {
-		const form = await request.formData();
-		const requestCode = form.get('requestCode') as string;
-
-		await cancelFriendRequest(requestCode);
-		return {
-			profile: await getUserProfile(locals.user!.id)
-		};
-	}
 };

@@ -15,108 +15,101 @@
 	$: requestsToYou = data.profile?.requests!;
 </script>
 
-<main class="Profile">
-	<h1>
-		Hello,
-		<span>
-			{$UserStore?.username}!
-		</span>
-	</h1>
-	<div class="Profile__inviteCodes Row--end gap-10 w-100">
-		<label class="CrispLabel w-auto" data-direction="row" data-align="center" for="copy">
-			<p>Share you code!</p>
-			<input
-				type="text"
-				name="copy"
-				class="CrispButton"
-				style="--crp-button-width: 100px;"
-				on:click={() => {
-					navigator.clipboard.writeText($UserStore?.inviteCode || '');
-				}}
-				value={$UserStore?.inviteCode}
-				readOnly
-			/>
-		</label>
-		<details
-			class="CrispMenu ProfileMenu"
-			use:clickOutside
-			bind:open={requestMenu}
-			on:outclick={() => (requestMenu = false)}
-		>
-			<summary>
-				<span> Send request </span>
-			</summary>
-			<div class="CrispMenu__content ProfileMenu__content">
-				<h3>Send request</h3>
-				<form method="post" use:enhance action="/profile/friends?/sendRequest">
-					<label class="CrispLabel" for="inviteCode">
-						<p data-required>User Invite code</p>
-						<input
-							required
-							type="text"
-							name="inviteCode"
-							class="CrispInput"
-							placeholder="Invite code"
-						/>
-					</label>
-					<button class="CrispButton">Send request</button>
-					{#if form && form?.error}
-						<p class="ProfileMenu__content--error">Invalid user!</p>
-					{/if}
-				</form>
-			</div>
-		</details>
-	</div>
-	<section class="Profile__section">
-		<header class="Profile__section--header">
-			<h5>Friends</h5>
-		</header>
-		<ul class="Profile__friendList">
-			{#if requestsFromYou.length === 0 && requestsToYou.length === 0}
-				<p>No friends yet!</p>
-			{:else}
-				{#each requestsToYou.filter((request) => request.status === FriendStatus.ACCEPTED) as request}
-					<li>
-						<div class="Profile__friendList--left gap-15">
-							<img src={request.sender.picture} alt={request.sender.username} />
-							<h4>{request.sender.username}</h4>
-						</div>
-						<div class="Profile__friendList--right gap-15">
-							<span>
-								<i>
-									{request.status}
-								</i>
-							</span>
-						</div>
-					</li>
-				{/each}
-			{/if}
-		</ul>
-	</section>
-</main>
+<div class="Profile__inviteCodes Row--end gap-10 w-100">
+	<label class="CrispLabel w-auto" data-direction="row" data-align="center" for="copy">
+		<p>Share you code!</p>
+		<input
+			type="text"
+			name="copy"
+			class="CrispButton"
+			style="--crp-button-width: 100px;"
+			on:click={() => {
+				navigator.clipboard.writeText($UserStore?.inviteCode || '');
+			}}
+			value={$UserStore?.inviteCode}
+			readOnly
+		/>
+	</label>
+	<details
+		class="CrispMenu ProfileMenu"
+		use:clickOutside
+		bind:open={requestMenu}
+		on:outclick={() => (requestMenu = false)}
+	>
+		<summary>
+			<span> Send request </span>
+		</summary>
+		<div class="CrispMenu__content ProfileMenu__content">
+			<h3>Send request</h3>
+			<form method="post" use:enhance action="/profile/friends?/sendRequest">
+				<label class="CrispLabel" for="inviteCode">
+					<p data-required>User Invite code</p>
+					<input
+						required
+						type="text"
+						name="inviteCode"
+						class="CrispInput"
+						placeholder="Invite code"
+					/>
+				</label>
+				<button class="CrispButton">Send request</button>
+				{#if form && form?.error}
+					<p class="ProfileMenu__content--error">Invalid user!</p>
+				{/if}
+			</form>
+		</div>
+	</details>
+</div>
+<section class="Profile__section">
+	<header class="Profile__section--header">
+		<h5>Friends</h5>
+	</header>
+	<ul class="Profile__friendList">
+		{#if requestsFromYou.length === 0 && requestsToYou.length === 0}
+			<p>No friends yet!</p>
+		{:else}
+			{#each requestsToYou.filter((request) => request.status === FriendStatus.ACCEPTED) as request}
+				<li>
+					<div class="Profile__friendList--left gap-15">
+						<img src={request.sender.picture} alt={request.sender.username} />
+						<h4>{request.sender.username}</h4>
+						<h5>{request.sender.email}</h5>
+					</div>
+					<div class="Profile__friendList--right gap-15">
+						<span>
+							<i>
+								<!-- {request.status} -->
+							</i>
+						</span>
+					</div>
+				</li>
+			{/each}
+			{#each requestsFromYou.filter((request) => request.status === FriendStatus.ACCEPTED) as request}
+				<li>
+					<div class="Profile__friendList--left gap-15">
+						<img src={request.receiver.picture} alt={request.receiver.username} />
+						<h4>{request.receiver.username}</h4>
+						<h5>{request.receiver.email}</h5>
+					</div>
+					<div class="Profile__friendList--right gap-15">
+						<span>
+							<i>
+								<!-- {request.status} -->
+							</i>
+						</span>
+					</div>
+				</li>
+			{/each}
+		{/if}
+	</ul>
+</section>
 
 <style lang="scss">
 	.Profile {
-		gap: 14px;
-		padding: 16px;
-		margin: 64px auto;
-		max-width: $maxProfileWidth;
-		@include box($height: auto);
-		@include make-flex($just: flex-start, $align: flex-start);
-
 		&__inviteCodes {
 			@include respondAt(510px) {
 				flex-direction: column;
 				align-items: flex-end;
-			}
-		}
-
-		& > h1 {
-			font-size: 40px;
-			font-weight: 900;
-
-			& > span {
-				color: var(--green);
 			}
 		}
 
@@ -204,6 +197,13 @@
 					height: 14px;
 					font-size: 16px;
 					font-weight: 600;
+					white-space: nowrap;
+				}
+
+				h5 {
+					height: 14px;
+					font-size: 14px;
+					font-weight: 500;
 					white-space: nowrap;
 				}
 			}

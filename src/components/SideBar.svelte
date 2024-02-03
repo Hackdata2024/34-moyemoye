@@ -60,7 +60,7 @@
 			/>
 			<div class="Sidebar__bottom--col">
 				<p title={userName}>{userName}</p>
-				<p title={`${$UserStore?.googleID}`}>{$UserStore?.googleID}</p>
+				<p title={`${$UserStore?.email}`}>{$UserStore?.email}</p>
 			</div>
 			<form method="post" use:enhance action="/">
 				<button class="CrispButton" data-type="danger">

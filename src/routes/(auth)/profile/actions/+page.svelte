@@ -1,15 +1,16 @@
 <script lang="ts">
-	import actionList from '$data/actions.json';
 	import type { PageData } from './$types';
+	import actionList from '$data/actions.json';
 	import type { Points } from '@prisma/client';
-	export let data: PageData;
 
+	export let data: PageData;
 	$: completedList = (data.completedTasks as Points[]).map((task) => task.task);
 	$: fullIndex = null as number | null;
 </script>
 
 <section class="Actions">
-	{#each actionList as action, index (action.title)}
+	<h3 class="w-100">You have completed these tasks!</h3>
+	{#each actionList.filter( (action) => completedList.includes(action.title) ) as action, index (action.title)}
 		<div class="ActionCard" data-difficulty={action.difficulty}>
 			<div class="ActionCard__top">
 				<h2 data-difficulty={action.difficulty}>{action.title}</h2>
@@ -44,15 +45,6 @@
 
 			<div class="Row--end w-100 gap-15">
 				<button class="CrispButton" on:click={() => (fullIndex = index)}>Read More</button>
-				{#if completedList.includes(action.title)}
-					<p>Completed</p>
-				{:else}
-					<form method="POST" action="/actions?/completeTask">
-						<input type="hidden" name="taskTitle" value={action.title} />
-						<input type="hidden" name="points" value={action.points} />
-						<button class="CrispButton" type="submit">Complete</button>
-					</form>
-				{/if}
 			</div>
 		</div>
 	{/each}
@@ -62,7 +54,7 @@
 	.Actions {
 		@include box(100%, auto);
 		@include make-flex($just: flex-start);
-		padding: 0 30px;
+		padding: 30px 0;
 		gap: 20px;
 
 		--green-border: #6ca94d;
@@ -156,16 +148,6 @@
 					text-overflow: ellipsis;
 					white-space: normal;
 				}
-
-				// min-height: 100px;
-				// // clamp
-				// -webkit-line-clamp: 4;
-				// -webkit-box-orient: vertical;
-				// display: -webkit-box;
-
-				// text-overflow: ellipsis;
-				// overflow: hidden;
-				// white-space: nowrap;
 			}
 		}
 	}

@@ -25,7 +25,8 @@ export const lucia = new Lucia(adapter, {
 			googleID: attributes.googleSub,
 			username: attributes.username,
 			picture: attributes.picture,
-			inviteCode: attributes.inviteCode
+			inviteCode: attributes.inviteCode,
+			email: attributes.email
 		};
 	}
 });
@@ -42,6 +43,7 @@ interface DatabaseUserAttributes {
 	username: string;
 	picture: string;
 	inviteCode: string;
+	email: string;
 }
 
 

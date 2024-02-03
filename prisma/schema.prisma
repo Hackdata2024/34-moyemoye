@@ -15,10 +15,12 @@ model User {
   sessions   Session[]
   googleSub  String    @unique
   username   String
+  email      String    @unique
   picture    String
   inviteCode String    @unique
   requests   Friend[]  @relation("Receiver")
   friends    Friend[]  @relation("Sender")
+  points     Points[]
 }
 
 model Session {
@@ -45,4 +47,13 @@ enum FriendStatus {
   ACCEPTED
   REJECTED
   CANCELLED
+}
+
+model Points {
+  id        String   @id @default(nanoid())
+  userId    String
+  points    Int
+  task      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
 }
