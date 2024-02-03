@@ -175,7 +175,7 @@
 
 <style lang="scss">
 	.Main {
-		@include box(100vw, 100vh);
+		@include box(100vw, auto);
 		padding-bottom: 100px;
 	}
 	.Hero {
