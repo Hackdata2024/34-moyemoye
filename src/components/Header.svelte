@@ -4,7 +4,7 @@
 
 	export let path: string;
 
-	$: if (path.includes('activism')) activeTab = 'activism';
+	$: if (path.includes('actions')) activeTab = 'actions';
 	else if (path.includes('brands')) activeTab = 'brands';
 	else if (path.includes('groups')) activeTab = 'groups';
 	else activeTab = 'home';
@@ -27,7 +27,7 @@
 		</div>
 		<ul class="Header__center">
 			<li><a href="/groups" class:active={activeTab === 'groups'}> Groups </a></li>
-			<li><a href="/activism" class:active={activeTab === 'activism'}> Activism </a></li>
+			<li><a href="/actions" class:active={activeTab === 'actions'}> Actions </a></li>
 			<li><a href="/brands" class:active={activeTab === 'brands'}> Brands </a></li>
 		</ul>
 		<div class="Header__right">
