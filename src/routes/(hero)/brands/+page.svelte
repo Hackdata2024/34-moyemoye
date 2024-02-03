@@ -52,7 +52,20 @@
 			</button>
 		{/each}
 	</div>
-	<div class="Brands__list"></div>
+	<div class="Brands__list">
+		{#each brandList.filter((brand) => activeFilter === 'All' || brand.category === activeFilter) as brand}
+			<div class="BrandCard">
+				<picture>
+					<img srcset={brand.image} alt={brand.name} />
+				</picture>
+				<h2>{brand.name}</h2>
+				<p>{brand.description}</p>
+				<div class="Row--end w-100" style="margin-top: auto;">
+					<a href={brand.link} class="CrispButton"> Learn More </a>
+				</div>
+			</div>
+		{/each}
+	</div>
 </section>
 
 <style lang="scss">
@@ -70,19 +83,19 @@
 
 			& > button {
 				outline: none;
-        border: 2px solid transparent;
+				border: 2px solid transparent;
 				padding: 10px 20px 10px 10px;
 				font-size: 20px;
-        gap: 10px;
+				gap: 10px;
 				border-radius: 50px;
 				@include box(auto, 64px);
 				@include make-flex($dir: row);
 				background-color: var(--subBG);
 				cursor: pointer;
 
-        &.active {
-          border: 2px solid var(--blue);
-        }
+				&.active {
+					border: 2px solid var(--blue);
+				}
 
 				transition: 0.3s ease;
 				i {
@@ -102,5 +115,70 @@
 				}
 			}
 		}
+
+		&__list {
+			display: grid;
+			// 3 columns
+			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+			gap: 20px;
+		}
+	}
+
+	.BrandCard {
+		@include box(100%, auto);
+		padding: 20px;
+		// @include make-flex($dir: row, $align: flex-start, $just: space-between);
+		gap: 20px;
+		transition: height 0.3s ease-in-out;
+		border-radius: 10px;
+		border: 1.5px solid var(--border);
+
+		// &__right {
+		& > picture {
+			@include box(auto, auto);
+			flex-shrink: 0;
+			overflow: hidden;
+			border-radius: 50%;
+			border: 1px solid var(--border);
+			@include make-flex($just: flex-start);
+			margin-bottom: 40px;
+			img {
+				@include box(80px, 80px);
+				@include make-flex();
+			}
+		}
+		gap: 15px;
+		@include box(100%, auto);
+		@include make-flex($align: flex-start);
+
+		h2 {
+			font-size: 28px;
+			font-weight: 700;
+			color: var(--green-border);
+		}
+
+		p {
+			-webkit-box-orient: vertical;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: normal;
+
+			font-size: 20px;
+			color: var(--subText);
+		}
+
+		a {
+			color: white;
+			text-decoration: none;
+			background-color: var(--green);
+			font-family: 'Jockey One', sans-serif;
+			border: none;
+			box-shadow: none;
+      font-weight: 300;
+			font-size: 18px;
+		}
+		// }
 	}
 </style>
