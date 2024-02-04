@@ -4,7 +4,7 @@
 	import type { Points } from '@prisma/client';
 	export let data: PageData;
 
-	$: completedList = (data.completedTasks as Points[]).map((task) => task.task);
+	$: completedList = ((data.completedTasks as Points[]) || []).map((task) => task.task);
 	$: fullIndex = null as number | null;
 </script>
 
@@ -49,14 +49,16 @@
 
 			<div class="Row--end w-100 gap-15">
 				<button class="CrispButton" on:click={() => (fullIndex = index)}>Read More</button>
-				{#if completedList.includes(action.title)}
-					<p>Completed</p>
-				{:else}
-					<form method="POST" action="/actions?/completeTask">
-						<input type="hidden" name="taskTitle" value={action.title} />
-						<input type="hidden" name="points" value={action.points} />
-						<button class="CrispButton" type="submit">Complete</button>
-					</form>
+				{#if data.user !== null}
+					{#if completedList.includes(action.title)}
+						<p>Completed</p>
+					{:else}
+						<form method="POST" action="/actions?/completeTask">
+							<input type="hidden" name="taskTitle" value={action.title} />
+							<input type="hidden" name="points" value={action.points} />
+							<button class="CrispButton" type="submit">Complete</button>
+						</form>
+					{/if}
 				{/if}
 			</div>
 		</div>

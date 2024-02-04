@@ -4,7 +4,7 @@
 	import type { Points } from '@prisma/client';
 
 	export let data: PageData;
-	$: completedList = (data.completedTasks as Points[]).map((task) => task.task);
+	$: completedList = ((data.completedTasks as Points[]) || []).map((task) => task.task);
 	$: fullIndex = null as number | null;
 </script>
 
