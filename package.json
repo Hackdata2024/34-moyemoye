@@ -6,7 +6,7 @@
 		"dev": "vite dev --host",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"build": "yarn check && vite build",
+		"build": "prisma generate && yarn check && vite build",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write ."
