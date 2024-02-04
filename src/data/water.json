@@ -67,7 +67,12 @@
 				"id": "number_of_people",
 				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
 				"description": "Enter the number of people in your household.",
-				"options": {}
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4"
+				}
 			}
 		]
 	},
@@ -435,7 +440,12 @@
 				"id": "number_of_people",
 				"question": "HOW MANY PEOPLE ARE IN YOUR HOUSEHOLD?",
 				"description": "Enter the number of people in your household.",
-				"options": {}
+				"options": {
+					"1": "1",
+					"2": "2",
+					"3": "3",
+					"4": "4"
+				}
 			}
 		]
 	},

@@ -7,6 +7,7 @@
 	$: if (path.includes('actions')) activeTab = 'actions';
 	else if (path.includes('brands')) activeTab = 'brands';
 	else if (path.includes('groups')) activeTab = 'groups';
+	else if (path.includes('water')) activeTab = 'water';
 	else activeTab = 'home';
 
 	$: activeTab = 'groups';
@@ -89,6 +90,9 @@
 			list-style: none;
 			padding: 0;
 			margin: 0;
+			@include respondAt(650px) {
+				display: none;
+			}
 
 			li {
 				a {

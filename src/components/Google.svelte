@@ -48,6 +48,15 @@
 			</span>
 		</summary>
 		<ul class="CrispMenu__content Profile__content">
+			<li class="CrispMenu__item Profile__item--mobile">
+				<a href="/groups">Groups</a>
+			</li>
+			<li class="CrispMenu__item Profile__item--mobile">
+				<a href="/actions">Actions</a>
+			</li>
+			<li class="CrispMenu__item Profile__item--mobile">
+				<a href="/brands">Brands</a>
+			</li>
 			<li class="CrispMenu__item">
 				<a href="/profile">Profile</a>
 			</li>
@@ -84,9 +93,9 @@
 				height: 16px;
 			}
 		}
+
 		&__content {
 			width: 120px;
-
 			li {
 				width: 100%;
 				padding: 0;
@@ -94,7 +103,7 @@
 					text-decoration: none;
 					height: 16px;
 					width: 100%;
-					padding: 0 10px ;
+					padding: 0 10px;
 				}
 				form {
 					width: 100%;
@@ -103,6 +112,14 @@
 						width: 100%;
 					}
 				}
+			}
+		}
+
+		&__item--mobile {
+			display: none;
+
+			@include respondAt(650px) {
+				display: flex;
 			}
 		}
 	}

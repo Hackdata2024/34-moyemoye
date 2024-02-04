@@ -33,11 +33,13 @@
 	<div class="Sidebar__logo Row--between gap-15">
 		<!-- <img src="/assets/images/logo.svg" alt="logo" /> -->
 		<h2 class="Sidebar__logo--title">
-			{#if navState}
-				Revive
-			{:else}
-				R
-			{/if}
+			<a href="/">
+				{#if navState}
+					Revive
+				{:else}
+					R
+				{/if}
+			</a>
 		</h2>
 	</div>
 	<ul class="Sidebar__menuList">
@@ -153,15 +155,20 @@
 			// 	object-fit: contain;
 			// }
 			&--title {
-				font-size: 55px;
 				width: 100%;
-				height: 30px;
-				margin-top: 10px;
-				@include make-flex();
-				font-weight: 600;
-				color: #11181c;
-				font-family: 'Courgette', cursive;
-				color: var(--green);
+
+				a {
+					font-size: 55px;
+					width: 100%;
+					height: 30px;
+					margin-top: 10px;
+					@include make-flex();
+					font-weight: 600;
+					// color: #11181c;
+					font-family: 'Courgette', cursive;
+					color: var(--green);
+					text-decoration: none;
+				}
 			}
 		}
 
