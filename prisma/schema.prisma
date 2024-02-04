@@ -11,16 +11,17 @@ datasource db {
 }
 
 model User {
-  id         String    @id
-  sessions   Session[]
-  googleSub  String    @unique
-  username   String
-  email      String    @unique
-  picture    String
-  inviteCode String    @unique
-  requests   Friend[]  @relation("Receiver")
-  friends    Friend[]  @relation("Sender")
-  points     Points[]
+  id             String           @id
+  sessions       Session[]
+  googleSub      String           @unique
+  username       String
+  email          String           @unique
+  picture        String
+  inviteCode     String           @unique
+  requests       Friend[]         @relation("Receiver")
+  friends        Friend[]         @relation("Sender")
+  points         Points[]
+  waterFootprint WaterFootprint[]
 }
 
 model Session {
@@ -54,6 +55,15 @@ model Points {
   userId    String
   points    Int
   task      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model WaterFootprint {
+  id        String   @id @default(nanoid())
+  userId    String
+  footprint Float
+  values    Json
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id])
 }

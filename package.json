@@ -37,6 +37,7 @@
 		"@lucia-auth/adapter-prisma": "^4.0.0",
 		"@prisma/client": "5.4.1",
 		"arctic": "^1.1.4",
+		"chart.js": "^4.4.1",
 		"lucia": "^3.0.1",
 		"oslo": "^1.0.4"
 	}

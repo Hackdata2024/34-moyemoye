@@ -156,3 +156,14 @@ export async function getFriendPoints(id: string) {
 		};
 	});
 }
+
+// water footprint
+export async function addWaterFootprint(id: string, footprint: number, answer: string) {
+	return db.waterFootprint.create({
+		data: {
+			userId: id,
+			footprint,
+			values: answer
+		}
+	});
+}

@@ -12,10 +12,10 @@
 				"question": "HOW LONG IS THE AVERAGE SHOWER IN YOUR HOUSEHOLD?",
 				"description": "Think about how people in your household shower and determine an average shower length. \n\nThen choose the interval that best reflects how your household uses the shower.",
 				"options": {
-					"Under 5 minutes": "4 minutes",
-					"5-10 minutes": "8 minutes",
-					"11-15 minutes": "13 minutes",
-					"Over 15 minutes": "15 minutes"
+					"Under 5 minutes": "4",
+					"5-10 minutes": "8",
+					"11-15 minutes": "13",
+					"Over 15 minutes": "15"
 				}
 			},
 			{
@@ -23,9 +23,9 @@
 				"question": "DO YOU HAVE LOW-FLOW SHOWERHEADS?",
 				"description": "Low-flow showerheads flow at 2.5 gallons per minute (gpm) (some go as low as 1.5 gpm). Older, less-efficient showerheads use as much as 5.0 gpm.",
 				"options": {
-					"Yes": "2.5 gpm",
-					"Some": "3.8 gpm",
-					"No": "5.0 gpm"
+					"Yes": "2.5",
+					"Some": "3.8",
+					"No": "5.0"
 				}
 			}
 		]
@@ -89,10 +89,10 @@
 				"question": "HOW LONG DO YOU LEAVE YOUR BATHROOM FAUCETS RUNNING EACH DAY? (Include brushing your teeth and shaving.)",
 				"description": "Think about how people in your household use the bathroom sink and determine an average use time. Then choose the time interval that best reflects how your household uses the bathroom sink.",
 				"options": {
-					"Under 4 minutes": "4 minutes",
-					"4-10 minutes": "8 minutes",
-					"11-30 minutes": "20 minutes",
-					"Over 30 minutes": "30 minutes"
+					"Under 4 minutes": "4",
+					"4-10 minutes": "8",
+					"11-30 minutes": "20",
+					"Over 30 minutes": "30"
 				}
 			},
 			{
@@ -100,9 +100,9 @@
 				"question": "DO YOUR BATHROOM SINKS HAVE LOW-FLOW FAUCETS?",
 				"description": "Low-flow faucets flow at 1.5 gpm (some go lower). Older, less-efficient faucets can flow as much as 5 gpm.",
 				"options": {
-					"Yes": "1.5 gpm",
-					"Some": "3.3 gpm",
-					"No": "5.0 gpm"
+					"Yes": "1.5",
+					"Some": "3.3",
+					"No": "5.0"
 				}
 			}
 		]
@@ -142,10 +142,10 @@
 				"question": "HOW LONG DO YOU LEAVE THE KITCHEN FAUCET RUNNING EACH DAY? (Include rinsing food and cleaning, don’t include washing dishes)",
 				"description": "Think about how people in your household use the kitchen sink - like when they wash their hands or rinse produce but not when they wash dishes - and determine an average use time. Then choose the time interval that best reflects how your household uses the kitchen sink.",
 				"options": {
-					"Under 5 minutes": "4 minutes",
-					"5-20 minutes": "13 minutes",
-					"21-45 minutes": "33 minutes",
-					"Over 45 minutes": "45 minutes"
+					"Under 5 minutes": "4",
+					"5-20 minutes": "13",
+					"21-45 minutes": "33",
+					"Over 45 minutes": "45"
 				}
 			},
 			{
@@ -153,8 +153,8 @@
 				"question": "DOES YOUR KITCHEN SINK HAVE A LOW-FLOW FAUCET?",
 				"description": "Water-saving faucets flow at 1.5 gpm (some even lower). Older, less-efficient faucets flow up to 5 gpm. We assume you only have one kitchen faucet.",
 				"options": {
-					"Yes": "1.5 gpm",
-					"No": "5.0 gpm"
+					"Yes": "1.5",
+					"No": "5.0"
 				}
 			}
 		]
@@ -175,7 +175,7 @@
 					"Less-efficient dishwasher": "15",
 					"Energy/Water-efficient dishwasher": "4.3",
 					"Hand wash": "27",
-					"Disposable dishes or eat out": "5.4 times the number of household members"
+					"Disposable dishes or eat out": "5.4"
 				}
 			},
 			{
@@ -289,7 +289,7 @@
 				"description": "The average household has the potential to generate about 23,000 gallons of usable greywater per year. Divide this by the number of people in your household to get the gallons per person per day. Subtract this from your total water footprint so far.",
 				"options": {
 					"0 gallons per year": "0",
-					"23,000 gallons per year": "23,000"
+					"23,000 gallons per year": "23000"
 				}
 			},
 			{
@@ -331,9 +331,9 @@
 					"100-500 square feet": "99",
 					"500-1,000 square feet": "248",
 					"1,000-5,000 square feet": "990",
-					"5,000-10,000 square feet": "2,470",
-					"10,000-40,000 square feet": "8,250",
-					"> 40,000 square feet": "14,375"
+					"5,000-10,000 square feet": "2470",
+					"10,000-40,000 square feet": "8250",
+					"> 40,000 square feet": "14375"
 				}
 			},
 			{
@@ -472,7 +472,7 @@
 		"type": "recycling",
 		"name": "Recycle Paper",
 		"avg": "3 gallons per person per day",
-		"calculation": "4 x {recycling_paper_category}",
+		"calculation": "4 * {recycling_paper_category}",
 		"resultType": "gallons of water per person per day",
 		"questions": [
 			{
@@ -491,7 +491,7 @@
 		"type": "recycling",
 		"name": "Recycle Plastic",
 		"avg": "1 gallon per person per day",
-		"calculation": "16.5 x {recycling_plastic_category}",
+		"calculation": "16.5 * {recycling_plastic_category}",
 		"resultType": "gallons of water per person per day",
 		"questions": [
 			{
@@ -510,7 +510,7 @@
 		"type": "recycling",
 		"name": "Recycle Plastic",
 		"avg": "1 gallon per person per day",
-		"calculation": "16.5 gallons x {recycling_plastic_category}",
+		"calculation": "16.5 * {recycling_plastic_category}",
 		"resultType": "gallons of water per person per day",
 		"questions": [
 			{
@@ -529,7 +529,7 @@
 		"type": "recycling",
 		"name": "Recycle Bottles & Cans",
 		"avg": "8 gallons per person per day",
-		"calculation": "30.13 gallons x {recycling_bottles_cans_category}",
+		"calculation": "30.13 * {recycling_bottles_cans_category}",
 		"resultType": "gallons of water per person per day",
 		"questions": [
 			{
@@ -548,7 +548,7 @@
 		"type": "recycling",
 		"name": "Recycle Fabrics",
 		"avg": "1 gallon per person per day",
-		"calculation": "5.7 gallons x {recycle_fabrics_category}",
+		"calculation": "5.7 * {recycle_fabrics_category}",
 		"resultType": "gallons of water per person per day",
 		"questions": [
 			{
