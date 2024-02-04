@@ -57,6 +57,9 @@
 			<li class="CrispMenu__item Profile__item--mobile">
 				<a href="/brands">Brands</a>
 			</li>
+			<li class="CrispMenu__item Profile__item--mobile">
+				<a href="/water">Water</a>
+			</li>
 			<li class="CrispMenu__item">
 				<a href="/profile">Profile</a>
 			</li>

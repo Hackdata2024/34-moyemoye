@@ -30,6 +30,7 @@
 			<li><a href="/groups" class:active={activeTab === 'groups'}> Groups </a></li>
 			<li><a href="/actions" class:active={activeTab === 'actions'}> Actions </a></li>
 			<li><a href="/brands" class:active={activeTab === 'brands'}> Brands </a></li>
+			<li><a href="/water" class:active={activeTab === 'water'}> Water </a></li>
 		</ul>
 		<div class="Header__right">
 			<Google />

@@ -1,10 +1,3 @@
-<script lang="ts">
-	import water from '$data/water.json';
-
-	$: answers = {};
-	$: questionNumber = 0;
-</script>
-
 <main class="WaterLayout">
 	<section class="Hero">
 		<h1>
